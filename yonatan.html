@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Yonatan Berhanu — Full-Stack Developer</title>
+<meta name="description" content="Portfolio of Yonatan Berhanu — Full-Stack JavaScript developer (React, Node.js). Projects, skills, contact."/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#0f1724; --card:#0b1220; --muted:#94a3b8; --accent:#7c3aed; --glass: rgba(255,255,255,0.03);
+    --maxw:1100px;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;color:#e6eef8;background:linear-gradient(180deg,#071022 0%,#071a2a 100%);-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .container{max-width:var(--maxw);margin:0 auto;padding:28px}
+  /* NAV */
+  header{position:sticky;top:12px;z-index:40}
+  .nav{
+    display:flex;align-items:center;justify-content:space-between; gap:16px;
+    backdrop-filter:blur(6px); background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border-radius:12px;padding:10px 14px;box-shadow:0 6px 30px rgba(2,6,23,0.6);
+  }
+  .brand{display:flex;align-items:center;gap:12px}
+  .logo{
+    width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#4f46e5);
+    display:grid;place-items:center;color:white;font-weight:700;font-size:18px;
+  }
+  nav ul{display:flex;gap:14px;align-items:center;margin:0;padding:0;list-style:none}
+  nav a{padding:8px 10px;border-radius:8px;color:var(--muted);font-weight:600;font-size:0.95rem}
+  nav a:hover{background:var(--glass);color:#fff}
+  .cta{background:linear-gradient(90deg,var(--accent),#4338ca);padding:8px 12px;border-radius:8px;color:white;font-weight:700}
+  /* HERO */
+  .hero{display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:center;margin-top:28px}
+  .headline{line-height:1.05}
+  .headline h1{font-size:2.05rem;margin:0 0 8px}
+  .headline p{color:var(--muted);margin:0 0 18px}
+  .actions{display:flex;gap:12px;flex-wrap:wrap}
+  .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:18px; border-radius:12px; box-shadow:0 8px 30px rgba(2,6,23,0.6)}
+  .profile{
+    width:100%; height:100%; max-height:420px; border-radius:12px; padding:18px; display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
+    background:linear-gradient(180deg, rgba(124,58,237,0.06), rgba(124,58,237,0.02));
+    border:1px solid rgba(255,255,255,0.03)
+  }
+  .avatar{
+    width:140px;height:140px;border-radius:18px;overflow:hidden;border:4px solid rgba(255,255,255,0.04);
+    display:grid;place-items:center;background:linear-gradient(135deg,#fff 0%, #e6eef8 100%);color:#071022;font-size:40px;font-weight:800
+  }
+  .skills{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+  .pill{background:rgba(255,255,255,0.04);padding:8px 10px;border-radius:999px;font-weight:600;color:var(--muted);font-size:0.9rem}
+  /* SECTIONS */
+  section{margin-top:28px}
+  h2.section-title{font-size:1.05rem;margin:0 0 10px;color:#fff}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .project{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+  .project h3{margin:0 0 8px;font-size:1rem}
+  .project p{margin:0;color:var(--muted);font-size:0.92rem}
+  .meta{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+  .tag{font-size:0.82rem;padding:6px 8px;border-radius:8px;background:rgba(255,255,255,0.02);color:var(--muted)}
+  /* CONTACT */
+  .contact-grid{display:grid;grid-template-columns:1fr 380px;gap:18px}
+  label{display:block;font-size:0.85rem;color:var(--muted);margin-bottom:6px}
+  input[type="text"],input[type="email"],textarea{
+    width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:#e6eef8;font-size:0.96rem;
+  }
+  textarea{min-height:140px;resize:vertical}
+  .btn{display:inline-block;padding:10px 14px;border-radius:10px;border:none;background:linear-gradient(90deg,var(--accent),#4338ca);color:white;font-weight:700;cursor:pointer}
+  .muted{color:var(--muted)}
+  footer{margin:28px 0;text-align:center;color:var(--muted);font-size:0.9rem}
+  /* RESPONSIVE */
+  @media (max-width:900px){
+    .hero, .contact-grid{grid-template-columns:1fr}
+    nav ul{display:none}
+    .nav .menu-toggle{display:block}
+  }
+  @media (max-width:520px){
+    .headline h1{font-size:1.5rem}
+    .logo{width:40px;height:40px;font-size:16px}
+  }
+  /* small helper */
+  .small{font-size:0.9rem;color:var(--muted)}
+  /* smooth scroll */
+  html{scroll-behavior:smooth}
+</style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="nav" role="navigation" aria-label="Main navigation">
+        <div class="brand">
+          <div class="logo" aria-hidden="true">YB</div>
+          <div>
+            <div style="font-weight:700">Yonatan Berhanu</div>
+            <div style="font-size:0.82rem;color:var(--muted)">Full-Stack JavaScript Developer</div>
+          </div>
+        </div>
+
+        <nav>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact" class="cta">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div style="display:flex;gap:8px;align-items:center">
+          <a class="small" href="resume.pdf" download>Resume</a>
+          <button class="menu-toggle" aria-expanded="false" style="display:none;background:transparent;border:none;color:var(--muted);font-weight:700">Menu</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="home" aria-label="Hero">
+      <div>
+        <div class="headline">
+          <h1>Hi, I'm <span style="color:var(--accent)">Yonatan</span> — I build full-stack web apps.</h1>
+          <p class="small">JavaScript (React & Node.js) • REST & GraphQL • PostgreSQL / MongoDB • Docker • Deploy to Vercel / Render</p>
+        </div>
+
+        <div class="actions" style="margin-top:18px">
+          <a class="btn" href="#projects">See Projects</a>
+          <a class="card" href="#contact" style="display:inline-flex;align-items:center;gap:10px">Let's talk <span style="font-size:0.9rem;color:var(--muted)">→</span></a>
+        </div>
+
+        <div style="margin-top:18px" class="card small">
+          <div style="display:flex;gap:12px;align-items:center">
+            <div style="width:46px;height:46px;border-radius:10px;background:rgba(255,255,255,0.03);display:grid;place-items:center;">💼</div>
+            <div>
+              <div style="font-weight:700">Open to work</div>
+              <div class="muted" style="font-size:0.9rem">Available for internships & junior roles</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="card profile" aria-label="Profile card">
+        <div class="avatar" aria-hidden="true">YB</div>
+        <div style="text-align:center">
+          <div style="font-weight:700;font-size:1.02rem">Yonatan Berhanu</div>
+          <div class="muted small">CSE Student • Full-Stack JS</div>
+        </div>
+
+        <div class="skills" style="margin-top:10px">
+          <span class="pill">React</span>
+          <span class="pill">Node.js</span>
+          <span class="pill">Express</span>
+          <span class="pill">MongoDB</span>
+          <span class="pill">Postgres</span>
+          <span class="pill">Docker</span>
+        </div>
+      </aside>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" aria-labelledby="about-title">
+      <h2 class="section-title" id="about-title">About</h2>
+      <div class="card small" style="line-height:1.5">
+        I'm Yonatan — a Computer Science student at Adama Science and Technology University who loves building clean, reliable web applications using JavaScript across the stack. I focus on building maintainable code, good UX, and production-ready deployments.
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" aria-labelledby="projects-title">
+      <h2 class="section-title" id="projects-title">Selected Projects</h2>
+
+      <div class="grid-3" style="margin-top:12px">
+        <article class="project" aria-labelledby="p1">
+          <h3 id="p1">E-Commerce App</h3>
+          <p>Full-stack e-commerce application with React frontend, Node/Express API, MongoDB, JWT auth, payments (Stripe), image uploads (Cloudinary).</p>
+          <div class="meta">
+            <span class="tag">React</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">MongoDB</span>
+            <a class="tag" href="#" aria-label="View project">Live</a>
+            <a class="tag" href="#" aria-label="Source code">Code</a>
+          </div>
+        </article>
+
+        <article class="project" aria-labelledby="p2">
+          <h3 id="p2">School Management System</h3>
+          <p>Admin dashboard for managing students, classes, and results. Role-based access control and CSV import/export.</p>
+          <div class="meta">
+            <span class="tag">React</span><span class="tag">Express</span><span class="tag">Postgres</span>
+            <a class="tag" href="#">Live</a>
+            <a class="tag" href="#">Code</a>
+          </div>
+        </article>
+
+        <article class="project" aria-labelledby="p3">
+          <h3 id="p3">Portfolio & Blog</h3>
+          <p>Static site with markdown-powered blog, SEO-friendly, deployed on Vercel. Simple CMS for updates.</p>
+          <div class="meta">
+            <span class="tag">Next.js</span><span class="tag">Vercel</span>
+            <a class="tag" href="#">Live</a>
+            <a class="tag" href="#">Code</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" aria-labelledby="skills-title">
+      <h2 class="section-title" id="skills-title">Skills</h2>
+      <div class="card" style="display:flex;flex-direction:column;gap:10px">
+        <div class="small"><strong>Languages:</strong> JavaScript (ES6+), SQL</div>
+        <div class="small"><strong>Frontend:</strong> React, Redux, HTML, CSS, Tailwind</div>
+        <div class="small"><strong>Backend:</strong> Node.js, Express, REST, GraphQL</div>
+        <div class="small"><strong>Database:</strong> MongoDB, PostgreSQL</div>
+        <div class="small"><strong>DevOps:</strong> Docker, GitHub Actions, Vercel, Render</div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" aria-labelledby="contact-title">
+      <h2 class="section-title" id="contact-title">Contact</h2>
+      <div class="contact-grid" style="margin-top:12px">
+        <form id="contactForm" class="card" onsubmit="return false;" aria-label="Contact form">
+          <div style="display:flex;gap:10px">
+            <div style="flex:1">
+              <label for="name">Name</label>
+              <input id="name" type="text" placeholder="Your full name" required>
+            </div>
+            <div style="flex:1">
+              <label for="email">Email</label>
+              <input id="email" type="email" placeholder="you@example.com" required>
+            </div>
+          </div>
+
+          <div style="margin-top:12px">
+            <label for="message">Message</label>
+            <textarea id="message" placeholder="Tell me about your project..." required></textarea>
+          </div>
+
+          <div style="display:flex;gap:10px;margin-top:12px;align-items:center">
+            <button class="btn" id="sendBtn" type="button">Send Message</button>
+            <div id="formResult" class="small muted" aria-live="polite"></div>
+          </div>
+        </form>
+
+        <aside class="card small">
+          <div style="font-weight:700">Let's build something!</div>
+          <p class="muted" style="margin-top:6px">Email: <a href="mailto:yonatan@example.com">yonatan@example.com</a></p>
+          <p class="muted">Location: Adama, Ethiopia</p>
+          <p style="margin-top:8px">Quick links:</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
+            <a class="pill" href="#">GitHub</a>
+            <a class="pill" href="#">LinkedIn</a>
+            <a class="pill" href="#">Twitter</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <footer>
+      <div class="small">© <span id="year"></span> Yonatan Berhanu — Built with ❤️ • <span class="muted">Full-Stack JavaScript</span></div>
+    </footer>
+  </div>
+
+<script>
+  // small JS for interactions & form validation
+  (function(){
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Contact form
+    const sendBtn = document.getElementById('sendBtn');
+    const formResult = document.getElementById('formResult');
+
+    function validate(name, email, msg){
+      if(!name.trim()) return 'Please enter your name.';
+      if(!email.trim() || !/^\S+@\S+\.\S+$/.test(email)) return 'Please enter a valid email.';
+      if(!msg.trim() || msg.trim().length < 10) return 'Message must be at least 10 characters.';
+      return '';
+    }
+
+    sendBtn.addEventListener('click', function(){
+      const name = document.getElementById('name').value || '';
+      const email = document.getElementById('email').value || '';
+      const msg = document.getElementById('message').value || '';
+
+      const error = validate(name,email,msg);
+      if(error){
+        formResult.textContent = error;
+        formResult.style.color = '#f97373'; // soft red
+        return;
+      }
+
+      // Simulate send (replace with real API or email service)
+      sendBtn.disabled = true;
+      formResult.textContent = 'Sending...';
+      formResult.style.color = '#93c5fd';
+
+      setTimeout(()=>{
+        sendBtn.disabled = false;
+        formResult.style.color = '#86efac';
+        formResult.textContent = 'Message sent — thank you! I will reply soon.';
+        document.getElementById('contactForm').reset();
+      }, 900);
+    });
+
+    // Optional: simple hash link fallback for small screens
+    const menuToggle = document.querySelector('.menu-toggle');
+    if(menuToggle){
+      menuToggle.style.display = 'none';
+      menuToggle.addEventListener('click', ()=>{
+        const nav = document.querySelector('nav ul');
+        const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+        menuToggle.setAttribute('aria-expanded', String(!expanded));
+        nav.style.display = expanded ? 'none' : 'flex';
+      });
+    }
+  })();
+</script>
+</body>
+</html>
