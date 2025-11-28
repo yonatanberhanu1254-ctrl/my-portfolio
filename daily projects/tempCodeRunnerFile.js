@@ -1,0 +1,10 @@
+const identity={};
+identity.firstName="Yonatan";
+identity.lastName="Berhanu";
+identity.age=21;
+identity.job="Student";
+console.log(identity.firstName);
+console.log(identity.lastName);
+console.log(identity.age);
+console.log(identity.job);
+fullname=person.firstName+" "+person.lastName;
